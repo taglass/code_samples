@@ -19,10 +19,6 @@ public class Quicksort {
             return; 
         }
 
-        String s = "";
-        for (int i = 0; i < array.length; ++i) {
-            s +=  "," + array[i];
-        }
         int pivotIndex = medianOfThree(array, leftIndex, rightIndex);
         int pivotNewIndex = partition(array, leftIndex, rightIndex, pivotIndex);
         sort(array, leftIndex, pivotNewIndex-1);
@@ -30,12 +26,6 @@ public class Quicksort {
     }
 
     private static <T extends Comparable<? super T>> int partition(T[] array, int leftIndex, int rightIndex, int pivotIndex) {
-        String s = "";
-        for (int i = leftIndex; i <= rightIndex; i++) {
-            s += "," + array[i];
-        }
-        logger.log(Level.DEBUG, "partition " + s);
-        T pivotValue = array[pivotIndex];
         swap(array, pivotIndex, rightIndex);
         int storeIndex = leftIndex;
         for (int i = leftIndex; i < rightIndex; ++i) {
@@ -46,7 +36,6 @@ public class Quicksort {
             }
         }
         swap(array, storeIndex, rightIndex);
-        logger.log(Level.DEBUG, "end parttion");
         return storeIndex;
 
     }
